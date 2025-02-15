@@ -1,7 +1,7 @@
 // Add the required props
 import { UserInfo } from '../UserInfo';
 
-export const TodoInfo = ({ todo, users }) => {
+export const TodoInfo = ({ todo }) => {
   let isCompleted = 'TodoInfo';
 
   if (todo.completed) {
@@ -11,11 +11,7 @@ export const TodoInfo = ({ todo, users }) => {
   return (
     <article className={isCompleted}>
       <h2 className="TodoInfo__title">{todo.title}</h2>
-      {users
-        .filter(user => todo.userId === user.id)
-        .map(user => (
-          <UserInfo key={user.id} user={user} />
-        ))}
+      <UserInfo key={todo.user.id} user={todo.user} />
     </article>
   );
 };
